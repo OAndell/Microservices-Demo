@@ -2,8 +2,9 @@
   "name": "services",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "serviceRegistry.js",
   "scripts": {
+    "start": "node serviceRegistry.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,0 +1,7 @@
+FROM node:10
+WORKDIR /subscription_handler
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 9003
+CMD [ "node", "subscriptionHandler.js" ]

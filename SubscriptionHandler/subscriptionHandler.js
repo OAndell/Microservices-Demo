@@ -13,6 +13,10 @@ let subscriptions = [
     }
 ]
 
+app.get('/', (req, res) => {
+    res.send("Subscription Handler")
+});
+
 app.get('/subscriptions', (req, res) => {
     res.send(subscriptions);
 });
@@ -46,4 +50,5 @@ app.get('/check_proximity/**', (req, res) => {
 
 });
 
+console.log(`SubscriptionHandler microservice listening on port ${port}`);
 app.listen(port);

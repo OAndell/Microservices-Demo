@@ -11,6 +11,10 @@ let services = [
     {id: 2 , name: "Service2", location : {x:100, y:100}}
 ]
 
+app.get('/', (req, res) => {
+    res.send("Service Registry")
+});
+
 app.get('/services', (req, res) => {
     res.send(services);
 });

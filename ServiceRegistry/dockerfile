@@ -1,0 +1,7 @@
+FROM node:10
+WORKDIR /service_registry
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 9002
+CMD [ "node", "serviceRegistry.js" ]

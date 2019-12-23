@@ -1,2 +1,18 @@
 version: "2.1"
 
+services:
+    service_registry: 
+        build: ./ServiceRegistry
+        command: npm start
+        ports:
+            - "9002:9002"
+    user_registry: 
+        build: ./UserRegistry
+        command: npm start
+        ports:
+            - "9001:9001"    
+    subscription_handler: 
+        build: ./SubscriptionHandler
+        command: npm start
+        ports:
+            - "9003:9003"            

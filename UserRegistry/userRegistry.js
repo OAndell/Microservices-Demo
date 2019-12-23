@@ -15,6 +15,10 @@ let users = [
     }
 ]
 
+app.get('/', (req, res) => {
+    res.send("User Registry")
+});
+
 app.get('/users', (req, res) => {
     res.send(users);
 });
