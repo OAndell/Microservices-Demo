@@ -47,12 +47,12 @@ app.post("/subscribe", (req, res) => {
     (subject) => subject.userID === userID
   );
   if(foundUserSub){
-    foundUserSub.services.push(serviceID);
+    foundUserSub.services.push({ id: serviceID});
   }else{
     subscriptions.push({
         userID : userID, 
         services : [
-            {id: serviceID}
+            { id: serviceID}
         ]
     });
   }
