@@ -1,0 +1,37 @@
+
+POST http://localhost:9001/add_user HTTP/1.1
+content-type:  application/json
+
+{
+    "user" : { 
+        "id" : 1000,
+        "location": { "x" : 50, "y": 50}
+    }
+}
+
+###
+
+POST http://localhost:9002/add_service HTTP/1.1
+content-type:  application/json
+
+{
+    "service" : { 
+        "id" : 2000,
+        "name": "NewService",
+        "location": { "x" : 40, "y": 45}
+    }
+}
+
+###
+
+POST http://localhost:9003/subscribe HTTP/1.1
+content-type:  application/json
+
+{
+    "userID" : 1000,
+    "serviceID" : 2000
+}
+
+###
+
+GET http://localhost:9003/check_proximity/1000 HTTP/1.1

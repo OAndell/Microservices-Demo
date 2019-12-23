@@ -43,6 +43,21 @@ app.get("/subscriptions/**", (req, res) => {
 app.post("/subscribe", (req, res) => {
   const userID = req.body.userID;
   const serviceID = req.body.serviceID;
+  const foundUserSub = subscriptions.find(
+    (subject) => subject.userID === userID
+  );
+  if(foundUserSub){
+    foundUserSub.services.push(serviceID);
+  }else{
+    subscriptions.push({
+        userID : userID, 
+        services : [
+            {id: serviceID}
+        ]
+    });
+  }
+  res.send({Message: "Subscribed to service " + serviceID});
+
 });
 
 app.get("/check_proximity/**", (req, res) => {

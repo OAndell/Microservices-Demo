@@ -33,7 +33,7 @@ app.get('/services/**', (req, res) => {
 app.post('/add_service', (req, res) => {
     const newService = req.body.service;
     services.push(newService);
-    res.send("Added service");
+    res.send({Message: "Added service", service: newService});
 });
 
 console.log(`Services microservice listening on port ${port}`);

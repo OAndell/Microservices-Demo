@@ -34,6 +34,12 @@ app.get('/users/**', (req, res) => {
     }
 });
 
+app.post('/add_user', (req, res) => {
+    const newUser = req.body.user;
+    users.push(newUser);
+    res.send({Message: "Added user", user : newUser});
+});
+
 
 console.log(`UserResgisty microservice listening on port ${port}`);
 app.listen(port);
