@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 let subscriptions = [
   {
     userID: 1,
-    services: [{ id: 1 }]
+    services: [ 1 ]
   }
 ];
 
@@ -47,12 +47,12 @@ app.post("/subscribe", (req, res) => {
     (subject) => subject.userID === userID
   );
   if(foundUserSub){
-    foundUserSub.services.push({ id: serviceID});
+    foundUserSub.services.push(serviceID);
   }else{
     subscriptions.push({
         userID : userID, 
         services : [
-            { id: serviceID}
+            serviceID
         ]
     });
   }
@@ -75,7 +75,7 @@ app.get("/check_proximity/**", (req, res) => {
       (err, res2) => {
         if (!err) {
           userLocation = JSON.parse(res2.body).location;
-          check_proximity(res, foundUserSub.services, userLocation)
+          checkProximityHelper(res, foundUserSub.services, userLocation)
         } else {
           res.status(400).send({ problem: "Error fetching user" });
         }
@@ -86,7 +86,7 @@ app.get("/check_proximity/**", (req, res) => {
   }
 });
 
-async function check_proximity(res, services, userLocation) {
+async function checkProximityHelper(res, services, userLocation) {
   var promiseArray = [];
   services.forEach((service) => {
     promiseArray.push(
@@ -94,7 +94,7 @@ async function check_proximity(res, services, userLocation) {
         request.get(
           {
             headers: { "content-type": "application/json" },
-            url: FETCH_SERVICE_ENDPOINT + service.id
+            url: FETCH_SERVICE_ENDPOINT + service
           },
           (err, res3) => {
             if (!err) {
