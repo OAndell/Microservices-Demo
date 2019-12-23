@@ -1,0 +1,15 @@
+
+POST http://localhost:9000/add_service HTTP/1.1
+content-type:  application/json
+
+{
+    "service" : { 
+        "id" : 23,
+        "name": "New Service",
+        "location": { "x" : -1, "y": -1}
+    }
+}
+
+###
+
+GET http://localhost:9000/services HTTP/1.1
